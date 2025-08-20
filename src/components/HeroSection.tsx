@@ -1,7 +1,28 @@
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/hero-face-recognition.jpg";
 
 const HeroSection = () => {
+  const { toast } = useToast();
+
+  const handleGetStarted = () => {
+    toast({
+      title: "Getting Started!",
+      description: "Connect to Supabase to enable full functionality including face recognition and payroll features.",
+    });
+  };
+
+  const handleViewDemo = () => {
+    toast({
+      title: "Demo Mode",
+      description: "Scroll down to explore the dashboard preview and system features.",
+    });
+    // Smooth scroll to dashboard preview
+    document.getElementById('dashboard-preview')?.scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with overlay */}
@@ -26,10 +47,20 @@ const HeroSection = () => {
           Automate attendance tracking with AI-powered face recognition and integrated payroll management
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="hero" size="lg" className="text-lg px-8 py-4">
+          <Button 
+            variant="hero" 
+            size="lg" 
+            className="text-lg px-8 py-4"
+            onClick={handleGetStarted}
+          >
             Get Started
           </Button>
-          <Button variant="outline" size="lg" className="text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white/20">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white/20"
+            onClick={handleViewDemo}
+          >
             View Demo
           </Button>
         </div>

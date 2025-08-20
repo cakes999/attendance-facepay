@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import dashboardImage from "@/assets/dashboard-preview.jpg";
 import { TrendingUp, Users, Clock, DollarSign } from "lucide-react";
 
@@ -35,8 +36,17 @@ const stats = [
 ];
 
 const DashboardPreview = () => {
+  const { toast } = useToast();
+
+  const handleExploreDashboard = () => {
+    toast({
+      title: "Dashboard Features",
+      description: "Connect to Supabase to access the full admin dashboard with real-time attendance tracking, employee management, and payroll calculations.",
+    });
+  };
+
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-muted/20 to-background">
+    <section id="dashboard-preview" className="py-20 px-4 bg-gradient-to-b from-muted/20 to-background">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -83,7 +93,11 @@ const DashboardPreview = () => {
                   <p className="text-sm text-muted-foreground mb-4">
                     Monitor attendance patterns, track employee performance, and generate detailed payroll reports
                   </p>
-                  <Button variant="default" size="sm">
+                  <Button 
+                    variant="default" 
+                    size="sm"
+                    onClick={handleExploreDashboard}
+                  >
                     Explore Dashboard
                   </Button>
                 </div>
