@@ -3,45 +3,47 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import dashboardImage from "@/assets/dashboard-preview.jpg";
 import { TrendingUp, Users, Clock, DollarSign } from "lucide-react";
-
-const stats = [
-  {
-    icon: Users,
-    label: "Active Employees",
-    value: "247",
-    change: "+12%",
-    color: "text-primary"
-  },
-  {
-    icon: Clock,
-    label: "Today's Attendance",
-    value: "94%",
-    change: "+5%",
-    color: "text-success"
-  },
-  {
-    icon: TrendingUp,
-    label: "Productivity Score",
-    value: "87%",
-    change: "+8%",
-    color: "text-info"
-  },
-  {
-    icon: DollarSign,
-    label: "Monthly Payroll",
-    value: "$89,420",
-    change: "+3%",
-    color: "text-warning"
-  }
-];
+import { getMockStats } from "@/lib/mockData";
 
 const DashboardPreview = () => {
   const { toast } = useToast();
+  const mockStats = getMockStats();
+
+  const stats = [
+    {
+      icon: Users,
+      label: "Total Employees",
+      value: mockStats.totalEmployees.toString(),
+      change: "+2 this month",
+      color: "text-primary"
+    },
+    {
+      icon: Clock,
+      label: "Present Today",
+      value: mockStats.presentToday.toString(),
+      change: `${mockStats.attendanceRate}% rate`,
+      color: "text-success"
+    },
+    {
+      icon: TrendingUp,
+      label: "Late Today",
+      value: mockStats.lateToday.toString(),
+      change: "tracking",
+      color: "text-warning"
+    },
+    {
+      icon: DollarSign,
+      label: "Absent Today",
+      value: mockStats.absentToday.toString(),
+      change: "monitoring",
+      color: "text-destructive"
+    }
+  ];
 
   const handleExploreDashboard = () => {
     toast({
-      title: "Dashboard Features",
-      description: "Connect to Supabase to access the full admin dashboard with real-time attendance tracking, employee management, and payroll calculations.",
+      title: "Mock Data Active",
+      description: "Currently showing test data for faster development. Real employee attendance tracking is ready to implement.",
     });
   };
 
