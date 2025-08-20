@@ -7,8 +7,8 @@ const HeroSection = () => {
 
   const handleGetStarted = () => {
     toast({
-      title: "Ready to Begin!",
-      description: "Your system is connected. Set up authentication and employee registration to start tracking attendance.",
+      title: "Ready to Test!",
+      description: "Scroll down to the Testing Dashboard to try the face recognition simulation with mock employee data.",
     });
   };
 
