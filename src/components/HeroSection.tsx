@@ -48,12 +48,11 @@ const HeroSection = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
-            variant="hero" 
             size="lg" 
-            className="text-lg px-8 py-4"
-            onClick={handleGetStarted}
+            className="text-lg px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground"
+            onClick={() => window.location.href = '/dashboard'}
           >
-            Get Started
+            Access Dashboard
           </Button>
           <Button 
             variant="outline" 

@@ -122,6 +122,25 @@ export class MockAttendanceService {
     return getMockStats();
   }
 
+  // Get recent attendance logs for admin dashboard
+  async getRecentAttendanceLogs(): Promise<any[]> {
+    await new Promise(resolve => setTimeout(resolve, 100));
+    return this.attendanceRecords
+      .map(record => ({
+        employeeName: this.employees.find(emp => emp.employee_id === record.employee_id)?.full_name || 'Unknown',
+        type: record.check_out ? 'check-out' : 'check-in',
+        timestamp: record.check_out || record.check_in || new Date().toISOString()
+      }))
+      .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+      .slice(0, 10);
+  }
+
+  // Get attendance by employee ID
+  async getAttendanceByEmployee(employeeId: string): Promise<AttendanceRecord[]> {
+    await new Promise(resolve => setTimeout(resolve, 100));
+    return this.attendanceRecords.filter(record => record.employee_id === employeeId);
+  }
+
   // Add new employee (for testing)
   async addEmployee(employee: Omit<Employee, 'id' | 'created_at'>): Promise<Employee> {
     await new Promise(resolve => setTimeout(resolve, 200));
