@@ -7,8 +7,8 @@ const HeroSection = () => {
 
   const handleGetStarted = () => {
     toast({
-      title: "Getting Started!",
-      description: "Connect to Supabase to enable full functionality including face recognition and payroll features.",
+      title: "Ready to Begin!",
+      description: "Your system is connected. Set up authentication and employee registration to start tracking attendance.",
     });
   };
 
